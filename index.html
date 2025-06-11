@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Randomizer Tim Mobile Legends</title>
+    <link rel="stylesheet" href="assets/css/header.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+      }
+
+      body {
+        color: #ffffff;
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+
+      #content-container {
+        margin-top: 80px;
+        min-height: calc(100vh - 80px);
+        padding: 2rem;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: #ffffff;
+        text-align: center;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      p {
+        font-size: 1.2rem;
+        color: #e0e0e0;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      .slot-machine {
+        backdrop-filter: blur(10px);
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        padding: 2rem;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .reels {
+        /* background-color: white; */
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        min-height: 200px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .hero-slot {
+        perspective: 1000px;
+      }
+
+      .hero-card {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        padding: 1rem;
+        width: 120px;
+        height: 160px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .hero-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero-image {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-bottom: 1rem;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .hero-name {
+        font-size: 1rem;
+        font-weight: 600;
+        color: green;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      }
+
+      .controls {
+        height: auto;
+        background-color: #485460;
+      }
+
+      #spin-button {
+        background: linear-gradient(45deg, #007aff, #00c6ff);
+        color: white;
+        border: none;
+        padding: 1rem 2.5rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+      }
+
+      #spin-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
+      }
+
+      #spin-button:active {
+        transform: translateY(0);
+      }
+
+      #spin-button:disabled {
+        background: #666;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+
+      #result-display {
+        background-color: #485460;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-top: 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      #result-display h2 {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        font-size: 1.5rem;
+        color: #ffffff;
+        margin-bottom: 1rem;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      }
+
+      #result-display p {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-bottom-left-radius: 3px;
+        border-bottom-right-radius: 3px;
+
+        font-size: 1.1rem;
+        color: #e0e0e0;
+        margin-bottom: 0;
+      }
+
+      @media (max-width: 768px) {
+        #content-container {
+          padding: 1rem;
+          margin-top: 70px;
+        }
+
+        .slot-machine {
+          padding: 1.5rem;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .reels {
+          gap: 1rem;
+        }
+
+        .hero-card {
+          width: 100px;
+          height: 140px;
+        }
+
+        .hero-image {
+          width: 60px;
+          height: 60px;
+        }
+
+        #spin-button {
+          width: 100%;
+          padding: 0.8rem 1.5rem;
+        }
+      }
+    </style>
+    <script src="assets/scripts/script.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <div id="header-container"></div>
+    <div id="content-container">
+      <h1>Randomizer Tim Mobile Legends</h1>
+      <p>Hasil 5 hero dijamin unik!</p>
+
+      <div class="slot-machine" id="slot-machine-section">
+        <div class="reels"></div>
+        <div class="controls">
+          <button id="spin-button">Random Tim</button>
+        </div>
+        <div id="result-display">
+          <h2>Hasil Tim:</h2>
+          <p>-</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Function to load the header
+      async function loadHeader() {
+        try {
+          const response = await fetch("header.html");
+          const html = await response.text();
+          document.getElementById("header-container").innerHTML = html;
+        } catch (error) {
+          console.error("Error loading header:", error);
+        }
+      }
+
+      // Load header when page loads
+      document.addEventListener("DOMContentLoaded", loadHeader);
+    </script>
+  </body>
+</html>

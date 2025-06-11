@@ -1,0 +1,89 @@
+.slot-machine {
+  background: #485460;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 3px solid #d2dae2;
+}
+
+.reels {
+  display: flex; /* Membuat reel berjajar ke samping */
+  gap: 10px; /* Jarak antar kolom */
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.reel-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.reel-label {
+  color: #f1c40f;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.reel {
+  width: auto; /* Lebar ditambah untuk nama hero */
+  height: 120px; /* Cukup untuk menampilkan 1 hero dengan jelas */
+  background-color: #ecf0f1;
+  overflow: hidden; /* Sembunyikan hero yang berlebih di dalam reel */
+  border-radius: 5px;
+  border: 3px solid #7f8c8d;
+}
+
+.reel .heroes-container {
+  /* Transisi akan dikontrol oleh JavaScript */
+}
+
+.reel .hero {
+  width: 140px;
+  height: 120px; /* Setiap slot hero punya tinggi yang sama */
+  font-size: 20px; /* Ukuran font disesuaikan */
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #2c3e50;
+  box-sizing: border-box;
+  padding: 0 5px;
+  text-align: center;
+}
+
+#spin-button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 15px 30px;
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.2);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 5px #1f648e;
+  transition: all 0.1s ease;
+}
+
+#spin-button:active {
+  transform: translateY(5px);
+  box-shadow: 0 0 #1f648e;
+}
+
+#spin-button:disabled {
+  background-color: #1f648e;
+  cursor: not-allowed;
+  box-shadow: 0 5px #1f648e;
+}
+
+#result-display {
+  margin-top: 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
