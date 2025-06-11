@@ -30,7 +30,7 @@
 .reel {
   width: auto; /* Lebar ditambah untuk nama hero */
   height: 120px; /* Cukup untuk menampilkan 1 hero dengan jelas */
-  background-color: #ecf0f1;
+  background-color: #2c3e50;
   overflow: hidden; /* Sembunyikan hero yang berlebih di dalam reel */
   border-radius: 5px;
   border: 3px solid #7f8c8d;
@@ -48,7 +48,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #2c3e50;
+  color: green;
+  font-size: bold;
   box-sizing: border-box;
   padding: 0 5px;
   text-align: center;
